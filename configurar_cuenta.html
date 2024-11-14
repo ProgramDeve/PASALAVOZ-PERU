@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Cuenta - PASA LA VOZ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        h1 {
+            text-align: center;
+            color: #0073b1;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #0073b1;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccd6dd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .button {
+            background-color: #0073b1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            margin-top: 15px;
+        }
+        .button:hover {
+            background-color: #005f91;
+        }
+        .notification-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .notification-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Estilo para los botones de navegación */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .nav-button {
+            background-color: #0073b1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #005f91;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botones Inicio y Retroceder -->
+    <div class="navigation-buttons">
+        <button class="nav-button" onclick="goToHome()">Inicio</button>
+        <button class="nav-button" onclick="goBack()">Retroceder</button>
+    </div>
+
+    <div class="container">
+        <h1>Configuración de Cuenta</h1>
+
+        <!-- Información Personal -->
+        <div class="section">
+            <h2>Información Personal</h2>
+            <div class="form-group">
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre completo" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
+            </div>
+            <button class="button">Guardar Cambios</button>
+        </div>
+
+        <!-- Cambiar Contraseña -->
+        <div class="section">
+            <h2>Cambiar Contraseña</h2>
+            <div class="form-group">
+                <label for="current-password">Contraseña Actual</label>
+                <input type="password" id="current-password" name="current-password" placeholder="Ingresa tu contraseña actual" required>
+            </div>
+            <div class="form-group">
+                <label for="new-password">Nueva Contraseña</label>
+                <input type="password" id="new-password" name="new-password" placeholder="Ingresa tu nueva contraseña" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirmar Nueva Contraseña</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirma tu nueva contraseña" required>
+            </div>
+            <button class="button">Actualizar Contraseña</button>
+        </div>
+
+        <!-- Preferencias de Notificación -->
+        <div class="section">
+            <h2>Preferencias de Notificación</h2>
+            <div class="notification-options">
+                <div class="notification-option">
+                    <input type="checkbox" id="email-notifications" name="email-notifications">
+                    <label for="email-notifications">Recibir notificaciones por correo electrónico</label>
+                </div>
+                <div class="notification-option">
+                    <input type="checkbox" id="sms-notifications" name="sms-notifications">
+                    <label for="sms-notifications">Recibir notificaciones por SMS</label>
+                </div>
+                <div class="notification-option">
+                    <input type="checkbox" id="app-notifications" name="app-notifications">
+                    <label for="app-notifications">Recibir notificaciones en la aplicación</label>
+                </div>
+            </div>
+            <button class="button">Guardar Preferencias</button>
+        </div>
+    </div>
+
+    <script>
+        // Función para redirigir al menú correspondiente
+        function goToHome() {
+            const userRole = localStorage.getItem("userRole"); // Asume que guardas el rol en localStorage
+            if (userRole === "empleado") {
+                window.location.href = 'menuEmpleado.html';
+            } else if (userRole === "empleador") {
+                window.location.href = 'menuEmpleador.html';
+            } else {
+                alert("No se ha definido el rol del usuario.");
+            }
+        }
+
+        // Función para retroceder a la página anterior
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

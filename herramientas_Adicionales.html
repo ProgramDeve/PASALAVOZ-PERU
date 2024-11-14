@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas Avanzadas - PASA LA VOZ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #0073b1;
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+        .card-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            flex: 1;
+            min-width: 250px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .card p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .card a:hover {
+            background-color: #2980b9;
+        }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .nav-button {
+            background-color: #0073b1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #005f91;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botones de navegación -->
+    <div class="navigation-buttons">
+        <button class="nav-button" onclick="goToHome()">Inicio</button>
+        <button class="nav-button" onclick="goBack()">Retroceder</button>
+    </div>
+
+    <div class="container">
+        <h1>Herramientas Avanzadas</h1>
+
+        <div class="section">
+            <h2>Blog y Revisión</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Artículos Recientes</h3>
+                    <p>Lee y revisa artículos relevantes para mejorar tus habilidades y estar al día con las tendencias.</p>
+                    <a href="#">Leer Más</a>
+                </div>
+                <div class="card">
+                    <h3>Publica tu Opinión</h3>
+                    <p>Comparte tus pensamientos y retroalimentación sobre diversos temas del blog.</p>
+                    <a href="#">Escribir Opinión</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Soporte</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Ayuda 24/7</h3>
+                    <p>Contacta a nuestro equipo de soporte para resolver cualquier problema o duda que tengas.</p>
+                    <a href="#">Contactar Soporte</a>
+                </div>
+                <div class="card">
+                    <h3>Preguntas Frecuentes</h3>
+                    <p>Encuentra respuestas a las preguntas más comunes de los usuarios.</p>
+                    <a href="#">Ver FAQ</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Panel de Configuración y Notificaciones</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Configura tu Perfil</h3>
+                    <p>Actualiza tu información personal y ajusta tus preferencias.</p>
+                    <a href="#">Configurar Perfil</a>
+                </div>
+                <div class="card">
+                    <h3>Notificaciones</h3>
+                    <p>Gestiona las notificaciones que deseas recibir para estar siempre informado.</p>
+                    <a href="#">Ajustar Notificaciones</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goToHome() {
+            const userRole = localStorage.getItem("userRole"); // Suponiendo que el rol se guarda en localStorage
+            if (userRole === "empleado") {
+                window.location.href = 'menuEmpleado.html';
+            } else if (userRole === "empleador") {
+                window.location.href = 'menuEmpleador.html';
+            } else {
+                alert("No se ha definido el rol del usuario.");
+            }
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

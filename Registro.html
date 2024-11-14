@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Trabajador Independiente - PASA LA VOZ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .photo-upload {
+            border: 1px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .nav-button {
+            background-color: #0073b1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #005f91;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botones de navegación -->
+    <div class="navigation-buttons">
+        <button class="nav-button" onclick="goToHome()">Inicio</button>
+        <button class="nav-button" onclick="goBack()">Retroceder</button>
+    </div>
+
+    <div class="container">
+        <h1>Registro de Trabajador Independiente</h1>
+        <form id="workerForm" onsubmit="handleSubmit(event)">
+            <label for="nombres">Nombres:</label>
+            <input type="text" id="nombres" name="nombres" required>
+
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos" required>
+
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" name="edad" min="18" required>
+
+            <label for="experiencia">Experiencia Laboral:</label>
+            <textarea id="experiencia" name="experiencia" rows="3" placeholder="Describe tu experiencia..." required></textarea>
+
+            <label for="habilidades">Habilidades:</label>
+            <textarea id="habilidades" name="habilidades" rows="3" placeholder="Lista tus habilidades..." required></textarea>
+
+            <label for="portafolio">Portafolio:</label>
+            <input type="url" id="portafolio" name="portafolio" placeholder="Enlace a tu portafolio">
+
+            <label for="disponibilidad">Disponibilidad:</label>
+            <select id="disponibilidad" name="disponibilidad" required>
+                <option value="Tiempo Completo">Tiempo Completo</option>
+                <option value="Medio Tiempo">Medio Tiempo</option>
+                <option value="Freelance">Freelance</option>
+            </select>
+
+            <label for="precios">Precios:</label>
+            <input type="text" id="precios" name="precios" placeholder="Tarifas por tus servicios" required>
+
+            <!-- Espacio para la foto -->
+            <div class="photo-upload" onclick="document.getElementById('foto').click()">
+                <p>Sube tu foto</p>
+                <p style="font-size: 12px; color: #888;">Escanear cara</p>
+            </div>
+            <input type="file" id="foto" name="foto" accept="image/*" style="display: none;" required>
+
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault(); // Evita el envío del formulario
+
+            // Mostrar el mensaje de éxito
+            alert('Se registró correctamente. ¡Una chamba te espera!');
+            // Aquí podrías hacer la redirección a la página que desees, por ejemplo:
+            // window.location.href = "menuEmpleado.html" o menuEmpleador.html dependiendo de la selección del rol.
+        }
+
+        // Función para ir al inicio
+        function goToHome() {
+            const userRole = localStorage.getItem("userRole"); // Suponiendo que el rol se guarda en localStorage
+            if (userRole === "empleado") {
+                window.location.href = 'menuEmpleado.html';
+            } else if (userRole === "empleador") {
+                window.location.href = 'menuEmpleador.html';
+            } else {
+                alert("No se ha definido el rol del usuario.");
+            }
+        }
+
+        // Función para retroceder
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

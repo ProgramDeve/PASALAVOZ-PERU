@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal - PASA LA VOZ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            text-align: center;
+            padding: 15px;
+            background-color: #1e88e5; /* Azul llamativo */
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            position: relative;
+        }
+        .open-menu-btn {
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px 15px;
+            color: white;
+            background-color: transparent;
+            border: none;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border-radius: 50%;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .open-menu-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 20px;
+        }
+        .side-menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #1e88e5;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .side-menu .logo-container {
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+        .side-menu .logo-container img {
+            width: 80px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .side-menu a {
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            background-color: #1e88e5;
+            border: 1px solid white;
+            border-radius: 8px;
+            margin: 8px 20px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .side-menu a:hover {
+            background-color: #1565c0;
+            transform: scale(1.05);
+        }
+        .side-menu .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .side-menu .close-btn:hover {
+            transform: rotate(90deg);
+        }
+        .page-content {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .info {
+            text-align: center;
+            width: 75%;
+            padding: 20px;
+        }
+        .info h2 {
+            color: #1565c0;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .info p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .carousel {
+            width: 100%;
+            max-width: 300px;
+            overflow: hidden;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .carousel-images {
+            display: flex;
+            animation: slide 12s infinite;
+        }
+        .carousel img {
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-100%); }
+            50% { transform: translateX(-200%); }
+            75% { transform: translateX(-300%); }
+            100% { transform: translateX(0); }
+        }
+        .advertisement {
+            position: fixed;
+            right: 10px;
+            top: 60px;
+            width: 150px;
+            height: 500px; /* Extensión de la altura a 500px */
+            background-color: #e9ecef;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: slide-vertical 8s infinite;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+        @keyframes slide-vertical {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(100px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <button class="open-menu-btn" onclick="openMenu()">☰</button>
+        PASA LA VOZ
+    </div>
+
+    <!-- Menú lateral deslizante -->
+    <div id="sideMenu" class="side-menu">
+        <span class="close-btn" onclick="closeMenu()">&times;</span>
+        
+        <!-- Cuadro para el logo -->
+        <div class="logo-container">
+            <img src="logo_empresa.png" alt="Logo de la Empresa">
+        </div>
+        
+        <a href="buscador_filtros.html">Búsqueda y Filtros de Empleos</a>
+        <a href="calificasiones_reseñas.html">Calificaciones y Reseñas</a>
+        <a href="configurar_cuenta.html">Configurar Cuenta</a>
+        <a href="dashboard_general.html">Dashboard General</a>
+        <a href="empleador.html">Empleador</a>
+        <a href="herramientas_Adicionales.html">Herramientas Adicionales</a>
+        <a href="mensaje.html">Mensajes</a>
+        <a href="ops_registro.html">Operaciones de Registro</a>
+        <a href="publicacion_empleados.html">Publicación de Empleados</a>
+        <a href="Registro.html">Registro de Usuario</a>
+    </div>
+
+    <div class="container">
+        <div class="page-content">
+            <div class="info">
+                <h2>Información de la Empresa</h2>
+                <p><strong>Misión:</strong> Conectar a trabajadores independientes con clientes en Cusco de manera rápida y segura, promoviendo la economía local y el crecimiento profesional.</p>
+                
+                <!-- Carrusel de imágenes para misión -->
+                <div class="carousel">
+                    <div class="carousel-images">
+                        <img src="mision1.jpg" alt="Imagen Misión 1">
+                        <img src="mision2.jpg" alt="Imagen Misión 2">
+                        <img src="mision3.jpg" alt="Imagen Misión 3">
+                    </div>
+                </div>
+                
+                <p><strong>Visión:</strong> Convertirse en la plataforma líder en Cusco y expandirse a otras regiones de Perú, brindando más oportunidades a profesionales en un mercado digital en crecimiento.</p>
+                
+                <!-- Carrusel de imágenes para visión -->
+                <div class="carousel">
+                    <div class="carousel-images">
+                        <img src="vision1.jpg" alt="Imagen Visión 1">
+                        <img src="vision2.jpg" alt="Imagen Visión 2">
+                        <img src="vision3.jpg" alt="Imagen Visión 3">
+                    </div>
+                </div>
+                
+                <p><strong>Beneficios:</strong><br>
+                    <em>Para los trabajadores:</em> Visibilidad y conexión con clientes potenciales.<br>
+                    <em>Para los clientes:</em> Acceso a profesionales confiables y verificados.
+                </p>
+                <!-- Carrusel de imágenes para beneficios -->
+                <div class="carousel">
+                    <div class="carousel-images">
+                        <img src="beneficio1.jpg" alt="Imagen Beneficio 1">
+                        <img src="beneficio2.jpg" alt="Imagen Beneficio 2">
+                        <img src="beneficio3.jpg" alt="Imagen Beneficio 3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Publicidad deslizante en el lado derecho -->
+    <div class="advertisement">
+        <h2>Publicidad</h2>
+        <p>Promociones y servicios relevantes</p>
+        <img src="publicidad3.jpg" alt="Publicidad 1" style="width:100%; border-radius: 8px; margin-bottom: 10px;">
+        <img src="publicidad4.jpg" alt="Publicidad 2" style="width:100%; border-radius: 8px;">
+    </div>
+
+    <script>
+        function openMenu() {
+            document.getElementById("sideMenu").style.width = "250px";
+        }
+
+        function closeMenu() {
+            document.getElementById("sideMenu").style.width = "0";
+        }
+    </script>
+</body>
+</html>

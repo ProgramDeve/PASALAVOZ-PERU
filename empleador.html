@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel del Empleador - PASA LA VOZ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #0073b1;
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .job-list {
+            margin-top: 20px;
+        }
+        .job-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+        .job-card h3 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .job-card p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .job-card .status {
+            font-weight: bold;
+            color: #27ae60;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+        .actions button {
+            flex: 1;
+        }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .nav-button {
+            background-color: #0073b1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #005f91;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botones de navegación -->
+    <div class="navigation-buttons">
+        <button class="nav-button" onclick="goToHome()">Inicio</button>
+        <button class="nav-button" onclick="goBack()">Retroceder</button>
+    </div>
+
+    <div class="container">
+        <h1>Panel del Empleador</h1>
+
+        <div class="section">
+            <h2>Publicar Nuevo Empleo</h2>
+            <form>
+                <div class="form-group">
+                    <label for="titulo">Título del Trabajo</label>
+                    <input type="text" id="titulo" name="titulo" placeholder="Ej. Desarrollador Web">
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" name="descripcion" placeholder="Detalles del trabajo..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="requisitos">Requisitos</label>
+                    <textarea id="requisitos" name="requisitos" placeholder="Lista de requisitos..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="salario">Salario</label>
+                    <input type="text" id="salario" name="salario" placeholder="Ej. 1000 - 3000 USD">
+                </div>
+                <div class="form-group">
+                    <label for="ubicacion">Ubicación</label>
+                    <input type="text" id="ubicacion" name="ubicacion" placeholder="Ej. Lima, Perú">
+                </div>
+                <button type="submit" class="button">Publicar Empleo</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <h2>Empleos Publicados</h2>
+            <div class="job-list">
+                <div class="job-card">
+                    <h3>Desarrollador Web Junior</h3>
+                    <p class="status">Estado: Activo</p>
+                    <div class="actions">
+                        <button class="button">Editar</button>
+                        <button class="button">Cerrar</button>
+                    </div>
+                </div>
+                <div class="job-card">
+                    <h3>Diseñador Gráfico Freelance</h3>
+                    <p class="status">Estado: Cerrado</p>
+                    <div class="actions">
+                        <button class="button">Reabrir</button>
+                        <button class="button">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goToHome() {
+            const userRole = localStorage.getItem("userRole"); // Suponiendo que el rol se guarda en localStorage
+            if (userRole === "empleado") {
+                window.location.href = 'menuEmpleado.html';
+            } else if (userRole === "empleador") {
+                window.location.href = 'menuEmpleador.html';
+            } else {
+                alert("No se ha definido el rol del usuario.");
+            }
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

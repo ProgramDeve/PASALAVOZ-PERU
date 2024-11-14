@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes y Notificaciones - PASA LA VOZ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s;
+        }
+        .container:hover {
+            transform: translateY(-3px);
+        }
+        h1 {
+            text-align: center;
+            color: #0073b1;
+            font-size: 26px;
+            margin-bottom: 25px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #ddd;
+        }
+        .tab {
+            cursor: pointer;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px 5px 0 0;
+            background-color: #f0f0f0;
+            color: #555;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .tab.active {
+            background-color: #0073b1;
+            color: white;
+            border-bottom: 3px solid #0073b1;
+        }
+        .content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        .content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .message, .notification {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+        .message:hover, .notification:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .message h3, .notification h3 {
+            color: #0073b1;
+            margin: 0;
+            font-size: 18px;
+        }
+        .message p, .notification p {
+            margin: 8px 0;
+            color: #666;
+            font-size: 14px;
+        }
+        .timestamp {
+            font-size: 12px;
+            color: #aaa;
+            text-align: right;
+        }
+    </style>
+    <script>
+        function switchTab(tab) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.content');
+
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+
+            document.getElementById(tab).classList.add('active');
+            document.querySelector(`.${tab}`).classList.add('active');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Mensajes y Notificaciones</h1>
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('mensajes')">Mensajes</div>
+            <div class="tab" onclick="switchTab('notificaciones')">Notificaciones</div>
+        </div>
+
+        <div class="content mensajes active">
+            <div class="message">
+                <h3>Mensaje de Juan Pérez</h3>
+                <p>Hola, estoy interesado en la oferta de Desarrollador Web...</p>
+                <div class="timestamp">Hace 2 horas</div>
+            </div>
+            <div class="message">
+                <h3>Mensaje de María López</h3>
+                <p>¿Podríamos tener una reunión mañana para discutir detalles?</p>
+                <div class="timestamp">Hace 1 día</div>
+            </div>
+            <div class="message">
+                <h3>Mensaje de Carlos García</h3>
+                <p>He actualizado mi portafolio con nuevos proyectos. ¿Podrías revisarlo?</p>
+                <div class="timestamp">Hace 3 días</div>
+            </div>
+            <div class="message">
+                <h3>Mensaje de Ana Rodríguez</h3>
+                <p>Gracias por la oportunidad, estaré atento a cualquier actualización.</p>
+                <div class="timestamp">Hace 1 semana</div>
+            </div>
+            <div class="message">
+                <h3>Mensaje de Luis Fernández</h3>
+                <p>¿Puedes enviarme los detalles del contrato cuando tengas un momento?</p>
+                <div class="timestamp">Hace 2 semanas</div>
+            </div>
+        </div>
+
+        <div class="content notificaciones">
+            <div class="notification">
+                <h3>Notificación de Sistema</h3>
+                <p>Tu oferta de Desarrollador Web ha recibido una nueva aplicación.</p>
+                <div class="timestamp">Hace 3 horas</div>
+            </div>
+            <div class="notification">
+                <h3>Actualización de Perfil</h3>
+                <p>Tu perfil ha sido actualizado exitosamente.</p>
+                <div class="timestamp">Hace 2 días</div>
+            </div>
+            <div class="notification">
+                <h3>Alerta de Seguridad</h3>
+                <p>Se ha detectado un intento de inicio de sesión desde un nuevo dispositivo.</p>
+                <div class="timestamp">Hace 5 días</div>
+            </div>
+            <div class="notification">
+                <h3>Recomendación de Candidato</h3>
+                <p>Hemos encontrado un candidato que podría interesarte para tu oferta.</p>
+                <div class="timestamp">Hace 1 semana</div>
+            </div>
+            <div class="notification">
+                <h3>Recordatorio de Reunión</h3>
+                <p>Tienes una reunión programada con el equipo de desarrollo mañana a las 10 AM.</p>
+                <div class="timestamp">Hace 1 semana</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicación de Empleos - PASA LA VOZ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef2f7;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .nav-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #2980b9;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        label {
+            font-weight: bold;
+            color: #34495e;
+        }
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: #f8f9fa;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .form-group > div {
+            flex: 1;
+            min-width: 220px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botones de navegación -->
+    <div class="navigation-buttons">
+        <button class="nav-button" onclick="goToHome()">Inicio</button>
+        <button class="nav-button" onclick="goBack()">Retroceder</button>
+    </div>
+
+    <div class="container">
+        <h1>Publicación de Empleo</h1>
+        <form action="#" method="post">
+            <div class="form-section">
+                <label for="titulo">Título del Trabajo:</label>
+                <input type="text" id="titulo" name="titulo" placeholder="Ej. Desarrollador Web" required>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion" placeholder="Ej. Av. Principal 123" required>
+                </div>
+                <div>
+                    <label for="modalidad">Modalidad (Presencial/Remota):</label>
+                    <select id="modalidad" name="modalidad" required>
+                        <option value="">Seleccione...</option>
+                        <option value="Presencial">Presencial</option>
+                        <option value="Remota">Remota</option>
+                        <option value="Híbrida">Híbrida</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label for="requisitos">Requisitos de Trabajo:</label>
+                    <textarea id="requisitos" name="requisitos" placeholder="Lista los requisitos..." required></textarea>
+                </div>
+                <div>
+                    <label for="presupuesto">Presupuesto:</label>
+                    <input type="text" id="presupuesto" name="presupuesto" placeholder="Ej. $1,000 - $2,000" required>
+                </div>
+            </div>
+            <div class="form-section">
+                <label for="descripcion">Descripción del Trabajo:</label>
+                <textarea id="descripcion" name="descripcion" placeholder="Proporciona una descripción detallada del trabajo..." required></textarea>
+            </div>
+            <div class="form-section">
+                <label for="visibilidad">Visibilidad de Publicación:</label>
+                <select id="visibilidad" name="visibilidad" required>
+                    <option value="">Seleccione...</option>
+                    <option value="Pública">Pública</option>
+                    <option value="Privada">Privada</option>
+                </select>
+            </div>
+            <button type="submit">Publicar Empleo</button>
+        </form>
+    </div>
+
+    <script>
+        function goToHome() {
+            const userRole = localStorage.getItem("userRole");
+            if (userRole === "empleado") {
+                window.location.href = 'menuEmpleado.html';
+            } else if (userRole === "empleador") {
+                window.location.href = 'menuEmpleador.html';
+            } else {
+                alert("No se ha definido el rol del usuario.");
+            }
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</body>
+</html>

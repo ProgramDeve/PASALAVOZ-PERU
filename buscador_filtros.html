@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda y Filtrado de Empleos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .navigation-buttons button {
+            background-color: #0073b1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .navigation-buttons button:hover {
+            background-color: #005f8c;
+        }
+        h1 {
+            text-align: center;
+            color: #0073b1;
+            margin-bottom: 20px;
+        }
+        .filter-section {
+            margin-bottom: 20px;
+        }
+        .filter-section h2 {
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        label {
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .sort-section {
+            margin-top: 30px;
+        }
+        .sort-section h2 {
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+        .sort-options {
+            display: flex;
+            gap: 20px;
+        }
+        .sort-options select {
+            flex: 1;
+            min-width: 200px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botones de navegación -->
+    <div class="navigation-buttons">
+        <!-- Botón de Inicio que redirige al menú correspondiente -->
+        <button onclick="redirectToMenu()">Inicio</button>
+        <!-- Botón de Retroceder que lleva a la página anterior -->
+        <button onclick="retroceder()">Retroceder</button>
+    </div>
+
+    <div class="container">
+        <h1>Búsqueda y Filtrado de Empleos</h1>
+
+        <div class="filter-section">
+            <h2>Filtros Avanzados</h2>
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="categoria">Categoría</label>
+                    <select id="categoria" name="categoria">
+                        <option value="">Seleccione...</option>
+                        <option value="tecnologia">Tecnología</option>
+                        <option value="diseño">Diseño</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="finanzas">Finanzas</option>
+                        <option value="educacion">Educación</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="modalidad">Modalidad</label>
+                    <select id="modalidad" name="modalidad">
+                        <option value="">Seleccione...</option>
+                        <option value="presencial">Presencial</option>
+                        <option value="remota">Remota</option>
+                        <option value="hibrida">Híbrida</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="duracion">Duración</label>
+                    <select id="duracion" name="duracion">
+                        <option value="">Seleccione...</option>
+                        <option value="corta">Corta (1-3 meses)</option>
+                        <option value="media">Media (3-6 meses)</option>
+                        <option value="larga">Larga (6+ meses)</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="salario">Salario</label>
+                    <input type="text" id="salario" name="salario" placeholder="Ej. 1000 - 3000 USD">
+                </div>
+                <div class="filter-group">
+                    <label for="localizacion">Localización</label>
+                    <input type="text" id="localizacion" name="localizacion" placeholder="Ej. Lima, Perú">
+                </div>
+                <div class="filter-group">
+                    <label for="fecha-publicacion">Fecha de Publicación</label>
+                    <select id="fecha-publicacion" name="fecha-publicacion">
+                        <option value="">Seleccione...</option>
+                        <option value="hoy">Hoy</option>
+                        <option value="ultima-semana">Última semana</option>
+                        <option value="ultimo-mes">Último mes</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="experiencia">Experiencia</label>
+                    <select id="experiencia" name="experiencia">
+                        <option value="">Seleccione...</option>
+                        <option value="junior">Junior</option>
+                        <option value="intermedio">Intermedio</option>
+                        <option value="senior">Senior</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="tipo-contrato">Tipo de Contrato</label>
+                    <select id="tipo-contrato" name="tipo-contrato">
+                        <option value="">Seleccione...</option>
+                        <option value="tiempo-completo">Tiempo Completo</option>
+                        <option value="medio-tiempo">Medio Tiempo</option>
+                        <option value="freelance">Freelance</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="sort-section">
+            <h2>Ordenar por</h2>
+            <div class="sort-options">
+                <select id="ordenar" name="ordenar">
+                    <option value="relevancia">Relevancia</option>
+                    <option value="salario">Salario</option>
+                    <option value="fecha">Fecha de publicación</option>
+                    <option value="cercania">Cercanía</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="button" onclick="window.location.href='dashboard_general_empleado.html'">Buscar Empleos</button>
+    </div>
+
+    <script>
+        function redirectToMenu() {
+            // Asume que existe una variable o lógica para detectar el rol del usuario.
+            const userRole = "empleado"; // Cambia según el rol ("empleado" o "empleador")
+            if (userRole === "empleado") {
+                window.location.href = 'menuEmpleado.html';
+            } else if (userRole === "empleador") {
+                window.location.href = 'menuEmpleador.html';
+            }
+        }
+
+        function retroceder() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
